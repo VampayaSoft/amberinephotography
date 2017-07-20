@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amberine Photography</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <ul>
+        <li class="home"><a href="index.html">Home</a></li>
+        <li class="tutorials"><a href="about.html">About</a></li>
+        <li class="about"><a href="gallery.html">Gallery</a></li>
+        <li class="instagram"><a href="https://www.instagram.com/14snowflakes/">Instagram</a></li>
+        <li class="contact"><a href="mailto:amberine@gmail.com">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+  <main role="main">
+    <div class="gallery">
+  <div class="img-w">
+    <img src="assets/gallery/1.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/2.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/3.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/5.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/4.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/6.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/7.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/17.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/15.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/22.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/11.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/9.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/13.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/14.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/12.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/20.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/8.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/18.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/19.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/10.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/23.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/24.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/21.jpg" alt="" /></div>
+  <div class="img-w"><img src="assets/gallery/16.jpg" alt="" /></div>
+</div>
+  </main>
+  <script>
+  $(function() {
+  $(".img-w").each(function() {
+    $(this).wrap("<div class='img-c'></div>")
+    let imgSrc = $(this).find("img").attr("src");
+     $(this).css('background-image', 'url(' + imgSrc + ')');
+  })
+
+
+  $(".img-c").click(function() {
+    let w = $(this).outerWidth()
+    let h = $(this).outerHeight()
+    let x = $(this).offset().left
+    let y = $(this).offset().top
+
+
+    $(".active").not($(this)).remove()
+    let copy = $(this).clone();
+    copy.insertAfter($(this)).height(h).width(w).delay(500).addClass("active")
+    $(".active").css('top', y - 8);
+    $(".active").css('left', x - 8);
+
+      setTimeout(function() {
+    copy.addClass("positioned")
+  }, 0)
+
+  })
+
+})
+
+$(document).on("click", ".img-c.active", function() {
+  let copy = $(this)
+  copy.removeClass("positioned active").addClass("postactive")
+  setTimeout(function() {
+    copy.remove();
+  }, 500)
+})
+  </script>
+</body>
+</html>
