@@ -57,9 +57,9 @@ img {
 }
 
 .title {
-  padding: 6.5rem;
+  padding: 5rem;
   text-align: center;
-  margin: 0 auto;
+  position: absolute;
 }
 
 h1 {
